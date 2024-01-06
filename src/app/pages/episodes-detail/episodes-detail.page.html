@@ -1,0 +1,74 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <!-- <ion-title>character-detail</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home2">
+
+      </ion-back-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+
+  <div class="glass-content ion-padding">
+  
+  <!--------Cargando --------->
+    <div *ngIf="!episode" class="loader">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+    <!-------trae información del personaje---------->
+    <div class="ion-text-center ion-padding-top" *ngIf="episode">
+      <!-- <ion-avatar>
+        <img [src]="episode.image" />
+      </ion-avatar> -->
+      <h1>{{episode.image}}</h1>
+     
+
+      <ion-item lines="none">
+        <ion-icon slot="start" name="location-outline"></ion-icon>
+        <ion-label>Nombre de episodio: <br> <strong>{{episode.name}}</strong> </ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-icon slot="start" name="location-outline"></ion-icon>
+        <ion-label>Fecha de emisión: <br> <strong>{{episode.air_date}}</strong> </ion-label>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-margin-top">
+        <ion-icon slot="start" name="videocam-outline"></ion-icon>
+        <ion-label>Episodio<br> <strong>{{episode.episode}}</strong> </ion-label>
+        <ion-icon slot="end" name="chevron-down"></ion-icon>
+      </ion-item>
+      <!-- <ion-item lines="none" class="ion-margin-top">
+        <ion-icon slot="start" name="videocam-outline"></ion-icon>
+        <ion-label>Episodio<br> <strong>{{episode.episode}}</strong> </ion-label>
+        <ion-icon slot="end" name="chevron-down"></ion-icon>
+      </ion-item> -->
+
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let e of episode" size-lg="4" size-md="6" size="12">
+            <ion-card>
+              <ion-card-content class="ion-text-start">
+                <strong>{{e.name}}</strong>
+                <p>{{e.episode}}</p>
+                <p>Fecha de emision: {{e.air_date | date: 'dd/MM/YYYY'}}</p>
+              </ion-card-content>
+            </ion-card>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+  </div>
+
+
+
+
+
+
+</ion-content>
